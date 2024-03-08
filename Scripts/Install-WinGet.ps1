@@ -1,7 +1,7 @@
 Write-Host -ForegroundColor DarkGray "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) Installing WinGet"
 
 If (Get-Command "WinGet" -ErrorAction SilentlyContinue) {
-	Write-Host -ForegroundColor Green "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) WinGet is installed"
+	Write-Host -ForegroundColor Green "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) WinGet is already installed"
 }
 Else {
 	If (Get-AppxPackage -Name "Microsoft.DesktopAppInstaller" -ErrorAction SilentlyContinue) {
@@ -23,7 +23,7 @@ Else {
 	If (Get-Command "WinGet" -ErrorAction SilentlyContinue) {
 		$WingetVersion = & winget.exe --version
 		[string]$WingetVersion = $WingetVersion -Replace "[a-zA-Z\-]"
-		Write-Host -ForegroundColor Yellow "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) WinGet ($WingetVersion) requires an update"
+		Write-Host -ForegroundColor Yellow "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) The current version of WinGet ($WingetVersion) requires an update"
 	}
 	$progressPreference = "silentlyContinue"
 	Write-Host -ForegroundColor DarkGray "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) Downloading Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
@@ -36,4 +36,5 @@ Else {
 	Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
 	Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
 	Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+	Write-Host -ForegroundColor Green "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) WinGet is installed"	
 }
