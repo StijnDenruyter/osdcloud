@@ -25,9 +25,6 @@ Else {
 		[string]$WingetVersion = $WingetVersion -Replace "[a-zA-Z\-]"
 		Write-Host -ForegroundColor Yellow "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) WinGet ($WingetVersion) requires an update"
 	}
-	Else {
-		Write-Host -ForegroundColor DarkGray "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) Installing WinGet"
-	}
 	$progressPreference = "silentlyContinue"
 	Write-Host -ForegroundColor DarkGray "$((Get-Date).ToString('yyyy-MM-dd-HHmmss')) Downloading Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 	Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
